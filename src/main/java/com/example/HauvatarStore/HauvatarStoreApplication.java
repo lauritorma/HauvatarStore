@@ -20,7 +20,7 @@ public class HauvatarStoreApplication {
 	}
 	
 	//@Bean
-	//public CommandLineRunner bookDemo(TuoteRepository tRepository, CategoryRepository categoryRepository, UserRepository urepository) {
+	//public CommandLineRunner TuoteDemo(TuoteRepository tRepository, CategoryRepository categoryRepository, UserRepository urepository) {
 		//return (args) -> {
 			// categoryRepository.save(new Category("1"));
 			// categoryRepository.save(new Category("2"));
