@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lisää vaate</title>
 </head>
 <body>
 
+	<h1>Vaatteen lisäys</h1>
+	<h2>Lisää vaate:</h2>
+	<div>
+		<form th:object="${clothe}" th:action="@{save}" action="#" method="post">
+			<label for="clotheName">Nimi:</label>
+			 <input type="text" th:field="*{clotheName}" /> 
+			 <label for="clotheType">Tyyppi:</label>
+			 <input type="text" th:field="*{clotheType}" /> 
+			 <label for="clothePrice">Hinta:</label> 
+			 <input type="text" th:field="*{clothePrice}" /> 
+			 <label for="clotheManufacturer">Valmistaja:</label> 
+			 <input type="text" th:field="*{clotheManufacturer}" />
+			 <input type="submit" value="Save"></input>
+		</form>
+	</div>
+
 </body>
-</html>
