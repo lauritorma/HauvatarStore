@@ -20,13 +20,13 @@ public class HauvatarStoreApplication {
 	}
 	
 	//@Bean
-	//public CommandLineRunner bookDemo(TuoteRepository tRepository, CategoryRepository categoryRepository, UserRepository urepository) {
+	//public CommandLineRunner TuoteDemo(TuoteRepository tRepository, CategoryRepository categoryRepository, UserRepository urepository) {
 		//return (args) -> {
-			// categoryRepository.save(new Category("1"));
-			// categoryRepository.save(new Category("2"));
+			// categoryRepository.save(new Category("Koiran Vaatteet"));
+			// categoryRepository.save(new Category("Kissan Vaatteet"));
 			
-			//tRepository.save(new Tuote("1", categoryRepository.findByName("").get(0)));
-			//tRepository.save(new Tuote("2", "2", categoryRepository.findByName("").get(0)));
+			//tRepository.save(new Tuote("Koiran Villapaita", categoryRepository.findByName("Koiran Vaatteet").get(0), "15.99", "HauHau"));
+			//tRepository.save(new Tuote("Koiran Sadetakki", categoryRepository.findByName("Koiran Vaatteet").get(0), "29.99", "HauHau"));
 		
 			//Useri user1 = new Useri("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
 			//Useri user2 = new Useri("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN");
