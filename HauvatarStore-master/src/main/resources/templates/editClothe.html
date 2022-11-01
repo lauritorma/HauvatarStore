@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Muokkaa vaatetta</title>
+</head>
+<body>
+<h1>Muokkaa vaatteen tietoja</h1>
+<div>
+	 <form th:object="${clothe}" th:action="@{../save}" action="#" method="post"> 
+	 	 <label for="id"></label>
+	 	 <input type="hidden" id="id" th:field="*{id}"  class="form-control" />
+		 <label for="clotheName">Nimi:</label>
+		 <input type="text" th:field="*{clotheName}" />
+		 <label for="clotheType">Tyyppi:</label>
+		 <input type="text" th:field="*{clotheType}" /> 
+		 <label for="clothePrice">Hinta:</label> 
+		 <input type="text" th:field="*{clothePrice}" /> 
+		 <label for="clotheManufacturer">Valmistaja:</label> 
+		 <input type="text" th:field="*{clotheManufacturer}" />
+		 <input type="submit" value="Save"></input>
+	 </form>
+</div>
+
+</body>
+</html>
