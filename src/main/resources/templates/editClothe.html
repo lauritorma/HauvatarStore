@@ -7,17 +7,17 @@
 <body>
 <h1>Muokkaa vaatteen tietoja</h1>
 <div>
-	 <form th:object="${clothe}" th:action="@{../save}" action="#" method="post"> 
+	 <form th:object="${garmet}" th:action="@{../save}" action="#" method="post"> 
 	 	 <label for="id"></label>
 	 	 <input type="hidden" id="id" th:field="*{id}"  class="form-control" />
-		 <label for="clotheName">Nimi:</label>
-		 <input type="text" th:field="*{clotheName}" />
-		 <label for="clotheType">Tyyppi:</label>
-		 <input type="text" th:field="*{clotheType}" /> 
-		 <label for="clothePrice">Hinta:</label> 
-		 <input type="text" th:field="*{clothePrice}" /> 
-		 <label for="clotheManufacturer">Valmistaja:</label> 
-		 <input type="text" th:field="*{clotheManufacturer}" />
+		 <label for="name">Nimi:</label>
+		 <input type="text" th:field="*{name}" />
+		 <label for="type">Tyyppi:</label>
+		 <input type="text" th:field="*{type}" /> 
+		 <label for="price">Hinta:</label> 
+		 <input type="text" th:field="*{price}" /> 
+		 <label for="manufacturer">Valmistaja:</label> 
+		 <input type="text" th:field="*{manufacturer}" />
 		 <input type="submit" value="Save"></input>
 	 </form>
 </div>

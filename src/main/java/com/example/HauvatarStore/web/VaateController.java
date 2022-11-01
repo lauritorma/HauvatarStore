@@ -61,7 +61,7 @@ public class VaateController {
     
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editBook(@PathVariable("id") Long garmetId, Model model) { 
-    	model.addAttribute("clothe", garmetRepository.findById(garmetId));
+    	model.addAttribute("garmet", garmetRepository.findById(garmetId));
         return "/editClothe";
     }
 }
