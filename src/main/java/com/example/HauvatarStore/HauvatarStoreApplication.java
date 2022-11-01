@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.HauvatarStore.domain.Garmet;
+import com.example.HauvatarStore.domain.GarmetRepository;
+
 // import com.example.HauvatarStore.domain.Tuote;
 // import com.example.HauvatarStore.domain.TuoteRepository;
 // import com.example.HauvatarStore.domain.Category;
@@ -18,7 +21,13 @@ public class HauvatarStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HauvatarStoreApplication.class, args);
 	}
-	
+	@Bean
+	public CommandLineRunner vaateDemo(GarmetRepository gRepository) {
+		//Lassin testisäätö
+		return (args) -> {
+			gRepository.save(new Garmet("asd", "ASd", 123, "asd"));
+		};
+	}
 	//@Bean
 	//public CommandLineRunner TuoteDemo(TuoteRepository tRepository, CategoryRepository categoryRepository, UserRepository urepository) {
 		//return (args) -> {
