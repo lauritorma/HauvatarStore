@@ -43,7 +43,7 @@ public class VaateController {
   
     @RequestMapping(value = "/add")
     public String addGarmet(Model model){
-    	model.addAttribute("clothe", new Garmet());
+    	model.addAttribute("garmet", new Garmet());
         return "/addClothe";  
     }
     
