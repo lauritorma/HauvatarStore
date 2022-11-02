@@ -2,23 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <title>Muokkaa vaatetta</title>
 </head>
 <body>
 <h1>Muokkaa vaatteen tietoja</h1>
 <div>
-	 <form th:object="${garmet}" th:action="@{../save}" action="#" method="post"> 
+	 <form th:object="${garmet}" th:action="@{../save}" action="#" method="post" > 
+	 	<div class="col-md-4">
 	 	 <label for="id"></label>
 	 	 <input type="hidden" id="id" th:field="*{id}"  class="form-control" />
 		 <label for="name">Nimi:</label>
-		 <input type="text" th:field="*{name}" />
+		 <input type="text" th:field="*{name}" class="form-control"/>
 		 <label for="type">Tyyppi:</label>
-		 <input type="text" th:field="*{type}" /> 
+		 <input type="text" th:field="*{type}" class="form-control"/> 
 		 <label for="price">Hinta:</label> 
-		 <input type="text" th:field="*{price}" /> 
+		 <input type="text" th:field="*{price}" class="form-control"/> 
 		 <label for="manufacturer">Valmistaja:</label> 
-		 <input type="text" th:field="*{manufacturer}" />
-		 <input type="submit" value="Save"></input>
+		 <input type="text" th:field="*{manufacturer}" class="form-control"/>
+		 <input type="submit" value="Save" class="btn btn-success"></input>
+		</div>
 	 </form>
 </div>
 

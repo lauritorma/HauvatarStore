@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" >
 <head>
 <meta charset="UTF-8">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <title>Vaatelista</title>
 </head>
 <body>
 	<h1>Vaatteet</h1>
-	<table >
+	<table class="table table-stiped">
 		<tbody>
 		
 			<tr>
@@ -23,15 +24,15 @@
 				<td th:text="${clothelist.type}"></td>
 				<td th:text="${clothelist.price}"></td>
 				<td th:text="${clothelist.manufacturer}"></td>
-					<td><a th:href="@{/delete/{id}(id=${clothelist.id})}">Delete</a></td> 
-					<td><a th:href="@{/edit/{id}(id=${clothelist.id})}">Edit</a></td>  
+					<td><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
+					<td><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
 				
 			</tr>
 		
 		</tbody>
 	</table>
-	<a href="/add">Lisää vaate</a> 
-	<a href="/main">Palaa pääsivulle</a>
+	<a href="/add" class="btn btn-primary">Lisää vaate</a> 
+	<a href="/main" class="btn btn-primary">Palaa pääsivulle</a>
 	
 	
 

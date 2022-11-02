@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <title>Lisää vaate</title>
 </head>
 <body>
@@ -18,7 +19,7 @@
 			 <input type="text" th:field="*{price}" /> 
 			 <label for="manufacturer">Valmistaja:</label> 
 			 <input type="text" th:field="*{manufacturer}" />
-			 <input type="submit" value="Save"></input>
+			 <input type="submit" value="Save" class="btn btn-success"></input>
 		</form>
 	</div>
 
