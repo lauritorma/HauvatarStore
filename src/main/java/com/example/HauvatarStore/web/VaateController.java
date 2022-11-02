@@ -20,12 +20,12 @@ public class VaateController {
 	@Autowired
 	private GarmetRepository garmetRepository;
 	
-	@RequestMapping(value= {"/main", "/home", "/index"})
+	@RequestMapping(value= {"/main", "/home", "/index", "/"})
     public String homepage(Model model) {	
         return "/homepage";
     }
 	
-    @RequestMapping(value= {"/", "/clothes","/clothelist"})
+    @RequestMapping(value= {"/clothes","/clothelist"})
     public String garmetList(Model model) {	
         model.addAttribute("clothes", garmetRepository.findAll());
         return "/clothelist";

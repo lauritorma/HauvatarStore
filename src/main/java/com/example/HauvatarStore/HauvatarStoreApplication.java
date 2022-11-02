@@ -23,9 +23,11 @@ public class HauvatarStoreApplication {
 	}
 	@Bean
 	public CommandLineRunner vaateDemo(GarmetRepository gRepository) {
-		//Lassin testisäätö
 		return (args) -> {
-			gRepository.save(new Garmet("asd", "ASd", 123, "asd"));
+			gRepository.save(new Garmet("Koiruliinin villapaituliini", "Koiran vaatteet", 20, "K9 Clothing"));
+			gRepository.save(new Garmet("Koiruliinin sadetakkinen", "Koiran vaatteet", 25, "K9 Clothing"));
+			gRepository.save(new Garmet("Kissuliinin sadetakkuli", "Kissan vaatteet", 15, "Kitty Clothing"));
+			gRepository.save(new Garmet("Kisulin töppöset", "Kissan vaatteet", 5, "Kitty Clothing"));
 		};
 	}
 	//@Bean
