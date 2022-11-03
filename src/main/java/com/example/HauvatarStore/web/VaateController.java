@@ -3,9 +3,12 @@ package com.example.HauvatarStore.web;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,7 +51,10 @@ public class VaateController {
     }
     
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("garmet") Garmet garmet){
+    public String save(@ModelAttribute ("garmet") @Valid Garmet garmet, BindingResult bindingResult){
+    	if (bindingResult.hasErrors()) {
+    		return "/addClothe";
+    	}
     	garmetRepository.save(garmet);
         return "redirect:/clothes";
     }

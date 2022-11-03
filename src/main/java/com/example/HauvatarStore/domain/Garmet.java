@@ -4,15 +4,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PositiveOrZero;
 
 @Entity
 public class Garmet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String name;
+	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String type;
+	@PositiveOrZero
+	@Digits(integer=6, fraction=2, message = "Hinta pitää olla 2 desimaalin tarkkuudella")
 	private double price;
+	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String manufacturer;
 
 	public Garmet() {

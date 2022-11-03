@@ -11,15 +11,29 @@
 	<h2>Lisää vaate:</h2>
 	<div>
 		<form th:object="${garmet}" th:action="@{save}" action="#" method="post">
-			<label for="name">Nimi:</label>
-			 <input type="text" th:field="*{name}" /> 
-			 <label for="type">Tyyppi:</label>
-			 <input type="text" th:field="*{type}" /> 
-			 <label for="price">Hinta:</label> 
-			 <input type="text" th:field="*{price}" /> 
-			 <label for="manufacturer">Valmistaja:</label> 
-			 <input type="text" th:field="*{manufacturer}" />
-			 <input type="submit" value="Save" class="btn btn-success"></input>
+			<table>
+				<tr>
+					<td><label for="name">Nimi:</label> </td>
+					<td><input type="text" th:field="*{name}" /> </td>
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+				</tr>
+				<tr>
+					<td><label for="type">Tyyppi:</label> </td>
+					<td><input type="text" th:field="*{type}" /> </td>
+					<td th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></td>
+				</tr>
+				<tr>
+					<td><label for="price">Hinta:</label> </td>
+					<td><input type="text" th:field="*{price}" /> </td>
+					<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></td>
+				</tr>
+				<tr>
+					<td><label for="manufacturer">Valmistaja:</label> </td>
+					<td><input type="text" th:field="*{manufacturer}" /> </td>
+					<td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"></td>
+				</tr>
+				<input type="submit" value="Save" class="btn btn-success"></input>
+			</table>
 		</form>
 	</div>
 
