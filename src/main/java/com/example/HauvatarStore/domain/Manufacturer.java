@@ -26,6 +26,11 @@ public class Manufacturer {
 	
 	public Manufacturer() {}
 
+	public Manufacturer(String manufacturerName) {
+		super();
+		this.manufacturerName = manufacturerName;
+	}
+
 	public Long getManufacturerId() {
 		return manufacturerId;
 	}

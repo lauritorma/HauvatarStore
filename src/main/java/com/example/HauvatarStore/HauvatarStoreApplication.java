@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import com.example.HauvatarStore.domain.Garmet;
 import com.example.HauvatarStore.domain.GarmetRepository;
+import com.example.HauvatarStore.domain.Manufacturer;
+import com.example.HauvatarStore.domain.ManufacturerRepository;
 
 // import com.example.HauvatarStore.domain.Tuote;
 // import com.example.HauvatarStore.domain.TuoteRepository;
@@ -22,12 +24,20 @@ public class HauvatarStoreApplication {
 		SpringApplication.run(HauvatarStoreApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner vaateDemo(GarmetRepository gRepository) {
+	public CommandLineRunner vaateDemo(GarmetRepository gRepository, ManufacturerRepository mrepository) {
 		return (args) -> {
 			gRepository.save(new Garmet("Koiruliinin villapaituliini", "Koiran vaatteet", 20, "K9 Clothing"));
 			gRepository.save(new Garmet("Koiruliinin sadetakkinen", "Koiran vaatteet", 25, "K9 Clothing"));
 			gRepository.save(new Garmet("Kissuliinin sadetakkuli", "Kissan vaatteet", 15, "Kitty Clothing"));
 			gRepository.save(new Garmet("Kisulin töppöset", "Kissan vaatteet", 5, "Kitty Clothing"));
+		
+			mrepository.save(new Manufacturer("Mustin mirri"));
+			mrepository.save(new Manufacturer("Kylmä koira"));
+			mrepository.save(new Manufacturer("Dogster"));
+			mrepository.save(new Manufacturer("Murr & Miau"));
+			mrepository.save(new Manufacturer("Hedgehog Clothing co."));
+		
+		
 		};
 	}
 	//@Bean
