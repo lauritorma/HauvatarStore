@@ -17,11 +17,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.HauvatarStore.domain.Garmet;
 import com.example.HauvatarStore.domain.GarmetRepository;
+import com.example.HauvatarStore.domain.ManufacturerRepository;
 
 @Controller
 public class VaateController {
 	@Autowired
 	private GarmetRepository garmetRepository;
+	@Autowired
+	private ManufacturerRepository mrepository;
 	
 	@RequestMapping(value= {"/main", "/home", "/index", "/"})
     public String homepage(Model model) {	
@@ -47,6 +50,7 @@ public class VaateController {
     @RequestMapping(value = "/add")
     public String addGarmet(Model model){
     	model.addAttribute("garmet", new Garmet());
+    	model.addAttribute("manufacturers", mrepository.findAll());
         return "/addClothe";  
     }
     
@@ -68,6 +72,7 @@ public class VaateController {
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public String editBook(@PathVariable("id") Long garmetId, Model model) { 
     	model.addAttribute("garmet", garmetRepository.findById(garmetId));
+    	model.addAttribute("manufacturers", mrepository.findAll());
         return "/editClothe";
     }
 }
