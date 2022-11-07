@@ -24,6 +24,7 @@
 				<td th:text="${clothelist.type}"></td>
 				<td th:text="${clothelist.price}"></td>
 				<td th:text="${clothelist.manufacturer}"></td>
+				<td><a th:href="@{/clothesByManufacturer/{manufacturer}(manufacturer=${clothelist.manufacturer})}">See all clothes by this manufacturer</a></td>
 					<td><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
 					<td><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
 				
