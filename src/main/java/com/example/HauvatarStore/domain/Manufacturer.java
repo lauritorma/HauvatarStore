@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,6 +18,7 @@ public class Manufacturer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long manufacturerId;
+	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String manufacturerName;
 	
 	

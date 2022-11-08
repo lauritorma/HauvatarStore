@@ -60,7 +60,7 @@ public class ManufacturerController {
     @RequestMapping(value = "/deleteManufacturer/{manufacturerId}", method = RequestMethod.GET)
     public String deleteManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) {
         mrepository.deleteById(manufacturerId);
-        return "redirect:/clothes";
+        return "redirect:/manufacturerList";
     }
 
 }

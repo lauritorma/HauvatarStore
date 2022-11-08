@@ -21,7 +21,6 @@ public class Garmet {
 	@PositiveOrZero
 	@Digits(integer=6, fraction=2, message = "Hinta pitää olla 2 desimaalin tarkkuudella")
 	private double price;
-	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String manufacturer;
 
 	public Garmet() {

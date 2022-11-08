@@ -20,6 +20,14 @@
 
 </table>
 
+<div>
+	<form action="#" th:action="@{/clothesByManufacturer/{manufacturerName}(manufacturerName=${manufacturerName})}" method="GET">
+		<input type="text" id="manufacturerName" name="manufacturerName" placeholder="Valmistajan tuotteita">
+		<input type="submit" value="Hae tuotteita">
+	</form>
+</div>
+
 <a href="/clothelist" class="btn btn-primary">Vaatteet</a>
+<a href="/manufacturerList" class="btn btn-primary">Valmistajat</a>
 </body>
 </html>
