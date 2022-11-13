@@ -45,14 +45,5 @@ public class Manufacturer {
 	public void setManufacturerName(String manufacturerName) {
 		this.manufacturerName = manufacturerName;
 	}
-
-	public List<Garmet> getGarmets() {
-		return garmets;
-	}
-
-	public void setGarmets(List<Garmet> garmets) {
-		this.garmets = garmets;
-	}
-	
 	
 }

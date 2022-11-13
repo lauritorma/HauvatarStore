@@ -21,7 +21,7 @@
 		 <label for="manufacturer">Valmistaja:</label> 
 		 <td>
 		 	<select id="manufacturerList" th:field="*{manufacturer}" class="form-control">
-		 		<option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.manufacturerId}" th:text="${manufacturer.manufacturerName}"></option>
+		 		<option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.manufacturerName}" th:text="${manufacturer.manufacturerName}"></option>
 		 	</select> 
 		 </td>
 		 <input type="submit" value="Save" class="btn btn-success"></input>
