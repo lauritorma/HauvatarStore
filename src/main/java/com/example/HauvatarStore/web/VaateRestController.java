@@ -9,15 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.example.HauvatarStore.domain.Garmet;
 import com.example.HauvatarStore.domain.GarmetRepository;
@@ -40,11 +36,6 @@ public class VaateController {
         model.addAttribute("clothes", garmetRepository.findAll());
         return "/clothelist";
     }
-    
-    @GetMapping(value = { "/getAllClothes" })
-    public @ResponseBody List<Garmet> getAllClothes() {
-        return (List<Garmet>) garmetRepository.findAll();
-    }
 
     // Hae kaikki jonkun valmistajan vaatteet
     @RequestMapping(value = { "/clothesByManufacturer/{manufacturer}" })
@@ -53,12 +44,12 @@ public class VaateController {
         return "/clothelist";
     }
 
-    @RequestMapping(value = "/garmets", method = RequestMethod.GET)
-    public @ResponseBody List<Garmet> garmetListRest() {
+    @RequestMapping(value = "/books", method = RequestMethod.GET)
+    public @ResponseBody List<Garmet> bookListRest() {
         return (List<Garmet>) garmetRepository.findAll();
     }
 
-    @RequestMapping(value = "/garmet/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Garmet> findGarmetRest(@PathVariable("id") Long garmetId) {
         return garmetRepository.findById(garmetId);
     }
@@ -87,7 +78,7 @@ public class VaateController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editGarmet(@PathVariable("id") Long garmetId, Model model) {
+    public String editBook(@PathVariable("id") Long garmetId, Model model) {
         model.addAttribute("garmet", garmetRepository.findById(garmetId));
         model.addAttribute("manufacturers", mrepository.findAll());
         return "/editClothe";

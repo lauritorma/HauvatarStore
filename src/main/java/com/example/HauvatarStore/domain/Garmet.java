@@ -23,6 +23,7 @@ public class Garmet {
 	@PositiveOrZero(message = "Hinta ei voi olla negatiivinen luku")
 	@NotNull(message = "Kenttä ei voi olla tyhjä")
 	@Digits(integer=6, fraction=2, message = "Hinta saa olla enintään 6 numeroa ja enintään 2 desimaalin tarkkuudella")
+	
 	private Double price;
 	private String manufacturer;
 
