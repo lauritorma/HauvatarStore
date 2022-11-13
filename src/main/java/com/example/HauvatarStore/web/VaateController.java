@@ -44,12 +44,12 @@ public class VaateController {
         return "/clothelist";
     }
 
-    @RequestMapping(value = "/books", method = RequestMethod.GET)
-    public @ResponseBody List<Garmet> bookListRest() {
+    @RequestMapping(value = "/garmets", method = RequestMethod.GET)
+    public @ResponseBody List<Garmet> garmetListRest() {
         return (List<Garmet>) garmetRepository.findAll();
     }
 
-    @RequestMapping(value = "/book/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/garmet/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional<Garmet> findGarmetRest(@PathVariable("id") Long garmetId) {
         return garmetRepository.findById(garmetId);
     }
@@ -78,7 +78,7 @@ public class VaateController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String editBook(@PathVariable("id") Long garmetId, Model model) {
+    public String editGarmet(@PathVariable("id") Long garmetId, Model model) {
         model.addAttribute("garmet", garmetRepository.findById(garmetId));
         model.addAttribute("manufacturers", mrepository.findAll());
         return "/editClothe";
