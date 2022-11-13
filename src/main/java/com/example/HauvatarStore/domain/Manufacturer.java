@@ -23,11 +23,6 @@ public class Manufacturer {
 	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String manufacturerName;
 	
-	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer")
-	private List<Garmet> garmets;
-	
 	public Manufacturer() {}
 
 	public Manufacturer(String manufacturerName) {
