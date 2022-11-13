@@ -62,8 +62,9 @@ public class VaateController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("garmet") @Valid Garmet garmet, BindingResult bindingResult) {
+    public String save(Model model, @ModelAttribute("garmet") @Valid Garmet garmet, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("manufacturers", mrepository.findAll());
             return "/addClothe";
         }
         garmetRepository.save(garmet);
