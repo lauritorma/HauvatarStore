@@ -20,7 +20,7 @@ import com.example.HauvatarStore.domain.GarmetRepository;
 import com.example.HauvatarStore.domain.ManufacturerRepository;
 
 @Controller
-public class VaateController {
+public class VaateRestController {
     @Autowired
     private GarmetRepository garmetRepository;
     @Autowired
