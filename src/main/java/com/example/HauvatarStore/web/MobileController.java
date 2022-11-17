@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,7 +42,18 @@ public class MobileController {
         mrepository.save(manufacturer);
         return "redirect:/manufacturerListmobile";
     }
+    
+    @RequestMapping(value = "/editManufacturermobile/{manufacturerId}", method = RequestMethod.GET)
+    public String editManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) {
+        model.addAttribute("manufacturer", mrepository.findById(manufacturerId));
+        return "mobile/editManufacturer";
+    }
 	
+    @RequestMapping(value = "/deleteManufacturermobile/{manufacturerId}", method = RequestMethod.GET)
+    public String deleteManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) {
+        mrepository.deleteById(manufacturerId);
+        return "redirect:/manufacturerListmobile";
+    }
 	
 	
 	
