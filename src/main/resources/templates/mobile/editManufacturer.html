@@ -8,7 +8,7 @@
 <body>
 <h1>Muokkaa valmistajan tietoja</h1>
 <div>
-	 <form th:object="${manufacturer}" th:action="@{../saveManufacturer}" action="#" method="post" > 
+	 <form th:object="${manufacturer}" th:action="@{../saveManufacturermobile}" action="#" method="post" > 
 	 	<div class="col-md-3">
 	 	 <label for="id"></label>
 	 	 <input type="hidden" id="id" th:field="*{manufacturerId}"  class="form-control" />

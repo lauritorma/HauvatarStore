@@ -54,6 +54,10 @@ public class MobileController {
         mrepository.deleteById(manufacturerId);
         return "redirect:/manufacturerListmobile";
     }
+    
+    
+    
+    
 	
 	
 	
