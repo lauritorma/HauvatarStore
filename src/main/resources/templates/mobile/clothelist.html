@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<title>Vaatelista</title>
+</head>
+<body>
+	<h1>Vaatteet</h1>
+	<table class="table table-stiped">
+		<tbody>
+		
+			<tr>
+				<td><b>Nimi</b></td>
+				<td><b>Tyyppi</b></td>
+				<td><b>Hinta</b></td>
+				<td><b>Valmistaja</b></td>
+				<td></td>
+				<td></td>
+				
+			</tr>
+			<tr th:each = "clothelist : ${clothes}">
+				<td th:text="${clothelist.name}"></td>
+				<td th:text="${clothelist.type}"></td>
+				<td th:text="${clothelist.price}"></td>
+
+				<td><a th:href="@{/clothesByManufacturer/{manufacturer}(manufacturer=${clothelist.manufacturer})}" th:text="${clothelist.manufacturer}"></a></td>
+					<td><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
+					<td><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
+				
+			</tr>
+		
+		</tbody>
+	</table>
+	<a href="/add" class="btn btn-primary">Lisää vaate</a> 
+	<a href="/main" class="btn btn-primary">Palaa pääsivulle</a>
+	
+	
+
+
+</body>
+</html>

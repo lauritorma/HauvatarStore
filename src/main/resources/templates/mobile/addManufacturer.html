@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<title>Lisää valmistaja</title>
+</head>
+<body>
+
+	<h1>Valmistajan lisäys</h1>
+	<h2>Lisää valmistaja:</h2>
+	<div>
+		<form th:object="${manufacturer}" th:action="@{saveManufacturer}" action="#" method="post">
+			<table>
+				<tr>
+					<td><label for="manufacturerName">Nimi:</label> </td>
+					<td><input type="text" th:field="*{manufacturerName}" placeholder="Valmistajan nimi"/></td>
+					<td th:if="${#fields.hasErrors('manufacturerName')}" th:errors="*{manufacturerName}"></td>
+				</tr>
+			</table>
+			<input type="submit" value="Save" class="btn btn-success"></input>
+		</form>
+	</div>
+
+</body>
