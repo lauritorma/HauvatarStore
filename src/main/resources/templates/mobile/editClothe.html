@@ -8,7 +8,7 @@
 <body>
 <h1>Muokkaa vaatteen tietoja</h1>
 <div>
-	 <form th:object="${garmet}" th:action="@{../save}" action="#" method="post" > 
+	 <form th:object="${garmet}" th:action="@{../savemobile}" action="#" method="post" > 
 	 	<div class="col-md-4">
 	 	 <label for="id"></label>
 	 	 <input type="hidden" id="id" th:field="*{id}"  class="form-control" />

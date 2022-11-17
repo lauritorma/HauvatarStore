@@ -46,7 +46,6 @@ public class VaateController {
         return (List<Garmet>) garmetRepository.findAll();
     }
 
-    // Hae kaikki jonkun valmistajan vaatteet
     @RequestMapping(value = { "/clothesByManufacturer/{manufacturer}" })
     public String garmetListByManufacturer(@PathVariable("manufacturer") String manufacturer, Model model) {
         model.addAttribute("clothes", garmetRepository.findByManufacturer(manufacturer));
