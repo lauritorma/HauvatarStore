@@ -1,4 +1,4 @@
-package com.example.HauvatarStore.web;
+/*package com.example.HauvatarStore.web;
 
 import java.util.List;
 import java.util.Optional;
@@ -84,3 +84,4 @@ public class VaateRestController {
         return "/editClothe";
     }
 }
+*/
