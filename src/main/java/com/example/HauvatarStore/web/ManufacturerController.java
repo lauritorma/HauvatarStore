@@ -17,53 +17,50 @@ import com.example.HauvatarStore.domain.ManufacturerRepository;
 @Controller
 public class ManufacturerController {
 
-	
-	@Autowired
-	private ManufacturerRepository mrepository;
-	
-	
-	//View all manufacturers in list
-	
-	 @RequestMapping(value= {"/manufacturers","/manufacturerList"})
-	    public String manufacturerList(Model model) {	
-	        model.addAttribute("manufacturers", mrepository.findAll());
-	        return "/manufacturerList";
-	    }
-	 
-	 //Add new manufacturer
-	 
-	 @RequestMapping(value = "/addManufacturer")
-	    public String addManufacturer(Model model){
-	    	model.addAttribute("manufacturer", new Manufacturer());
-	        return "/addManufacturer";  
-	    }
-	 
-	 //Save new manufacturer
-	 
-	 @RequestMapping(value = "/saveManufacturer", method = RequestMethod.POST)
-	    public String save(@ModelAttribute ("manufacturer") @Valid Manufacturer manufacturer, BindingResult bindingResult){
-	    	if (bindingResult.hasErrors()) {
-	    		return "/addManufacturer";
-	    	}
-	    	mrepository.save(manufacturer);
-	        return "redirect:/manufacturerList";
-	    }
-	 
-	 //Edit manufacturer
-	 
-	 @RequestMapping(value = "/edit/{manufacturerId}", method = RequestMethod.GET)
-	    public String editManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) { 
-	    	model.addAttribute("manufacturer", mrepository.findById(manufacturerId));
-	        return "/editManufacturer";
-	    }
-	 
-	 //Delete manufacturer
-	 
-	 @RequestMapping(value = "/delete/{manufacturerId}", method = RequestMethod.GET)
-	    public String deleteManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) {
-	    	mrepository.deleteById(manufacturerId);
-	        return "redirect:/clothes";
-	    }
-	 
-	 
+    @Autowired
+    private ManufacturerRepository mrepository;
+
+    // View all manufacturers in list
+
+    @RequestMapping(value = { "/manufacturers", "/manufacturerList" })
+    public String manufacturerList(Model model) {
+        model.addAttribute("manufacturers", mrepository.findAll());
+        return "/manufacturerList";
+    }
+
+    // Add new manufacturer
+
+    @RequestMapping(value = "/addManufacturer")
+    public String addManufacturer(Model model) {
+        model.addAttribute("manufacturer", new Manufacturer());
+        return "/addManufacturer";
+    }
+
+    // Save new manufacturer
+
+    @RequestMapping(value = "/saveManufacturer", method = RequestMethod.POST)
+    public String save(@ModelAttribute("manufacturer") @Valid Manufacturer manufacturer, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/addManufacturer";
+        }
+        mrepository.save(manufacturer);
+        return "redirect:/manufacturerList";
+    }
+
+    // Edit manufacturer
+
+    @RequestMapping(value = "/editManufacturer/{manufacturerId}", method = RequestMethod.GET)
+    public String editManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) {
+        model.addAttribute("manufacturer", mrepository.findById(manufacturerId));
+        return "/editManufacturer";
+    }
+
+    // Delete manufacturer
+
+    @RequestMapping(value = "/deleteManufacturer/{manufacturerId}", method = RequestMethod.GET)
+    public String deleteManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) {
+        mrepository.deleteById(manufacturerId);
+        return "redirect:/manufacturerList";
+    }
+
 }

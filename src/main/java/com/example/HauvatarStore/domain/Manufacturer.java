@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.lang.NonNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,12 +20,8 @@ public class Manufacturer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long manufacturerId;
+	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String manufacturerName;
-	
-	
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer")
-	private List<Garmet> garmets;
 	
 	public Manufacturer() {}
 
@@ -46,14 +45,5 @@ public class Manufacturer {
 	public void setManufacturerName(String manufacturerName) {
 		this.manufacturerName = manufacturerName;
 	}
-
-	public List<Garmet> getGarmets() {
-		return garmets;
-	}
-
-	public void setGarmets(List<Garmet> garmets) {
-		this.garmets = garmets;
-	}
-	
 	
 }

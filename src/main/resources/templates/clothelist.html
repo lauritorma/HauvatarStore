@@ -14,7 +14,7 @@
 				<td><b>Nimi</b></td>
 				<td><b>Tyyppi</b></td>
 				<td><b>Hinta</b></td>
-				<td><b></b>Valmistaja</td>
+				<td><b>Valmistaja</b></td>
 				<td></td>
 				<td></td>
 				
@@ -23,7 +23,8 @@
 				<td th:text="${clothelist.name}"></td>
 				<td th:text="${clothelist.type}"></td>
 				<td th:text="${clothelist.price}"></td>
-				<td th:text="${clothelist.manufacturer}"></td>
+
+				<td><a th:href="@{/clothesByManufacturer/{manufacturer}(manufacturer=${clothelist.manufacturer})}" th:text="${clothelist.manufacturer}"></a></td>
 					<td><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
 					<td><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
 				

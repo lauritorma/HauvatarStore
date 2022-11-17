@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 @Entity
@@ -18,16 +20,17 @@ public class Garmet {
 	private String name;
 	@NotBlank(message = "Kenttä ei voi olla tyhjä")
 	private String type;
-	@PositiveOrZero
-	@Digits(integer=6, fraction=2, message = "Hinta pitää olla 2 desimaalin tarkkuudella")
-	private double price;
-	@NotBlank(message = "Kenttä ei voi olla tyhjä")
+	@PositiveOrZero(message = "Hinta ei voi olla negatiivinen luku")
+	@NotNull(message = "Kenttä ei voi olla tyhjä")
+	@Digits(integer=6, fraction=2, message = "Hinta saa olla enintään 6 numeroa ja enintään 2 desimaalin tarkkuudella")
+	
+	private Double price;
 	private String manufacturer;
 
 	public Garmet() {
 	}
 
-	public Garmet(String name, String type, double price, String manufacturer) {
+	public Garmet(String name, String type, Double price, String manufacturer) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -59,11 +62,11 @@ public class Garmet {
 		this.type = type;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
