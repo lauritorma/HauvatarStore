@@ -19,14 +19,14 @@
 			<tr th:each = "manufacturerList : ${manufacturers}">
 				<td th:text="${manufacturerList.manufacturerName}"></td>
 
-					<td><a th:href="@{/deleteManufacturer/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-danger">Delete</a></td> 
-					<td><a th:href="@{/editManufacturer/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Edit</a></td>  
+					<td><a th:href="@{/deleteManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-danger">Delete</a></td> 
+					<td><a th:href="@{/editManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Edit</a></td>  
 				
 			</tr>
 		
 		</tbody>
 	</table>
-	<a href="/addManufacturer" class="btn btn-primary">Lisää valmistaja</a> 
+	<a href="/addManufacturermobile" class="btn btn-primary">Lisää valmistaja</a> 
 	<a href="/main" class="btn btn-primary">Palaa pääsivulle</a>
 	
 	

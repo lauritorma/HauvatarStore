@@ -30,7 +30,7 @@ public class VaateController {
     @Autowired
     private ManufacturerRepository mrepository;
 
-    @RequestMapping(value = { "/main", "/home", "/index", "/" })
+    @RequestMapping(value = { "/home", "/index" })
     public String homepage(Model model) {
         return "/homepage";
     }
