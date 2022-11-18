@@ -2,11 +2,13 @@ package com.example.HauvatarStore.web;
 
 import java.net.URI;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -81,7 +83,7 @@ public class VaateController {
         return "/editClothe";
     }
     
-    //REST FUNCTIONALITY-------------------------------------------------------------------------------------------------
+    //REST FUNCTIONALITY---------------------------------------------------------------------------------------------------------------------------------------------
     
     @GetMapping(value = { "/getAllClothes" })
     public @ResponseBody List<Garmet> getAllClothes() {
@@ -105,19 +107,13 @@ public class VaateController {
     }
     
     @PutMapping(value = { "/putClothe/{id}" })
-    public Garmet editClotheById(@RequestBody Garmet newGarmet, @PathVariable Long id) {
-    	return garmetRepository.findById(id)
-    		      .map(garmet -> {
-    		        garmet.setName(newGarmet.getName());
-    		        garmet.setType(newGarmet.getType());
-    		        garmet.setPrice(newGarmet.getPrice());
-    		        garmet.setManufacturer(newGarmet.getManufacturer());
-    		        return garmetRepository.save(garmet);
-    		      })
-    		      .orElseGet(() -> {
-    		    	newGarmet.setId(id);
-    		        return garmetRepository.save(newGarmet);
-    		      });
-    	
+    public ResponseEntity<?> editClotheById(@RequestBody Garmet newGarmet, @PathVariable Long id) {
+    	try {
+    		newGarmet.setId(id);            
+            garmetRepository.save(newGarmet);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
