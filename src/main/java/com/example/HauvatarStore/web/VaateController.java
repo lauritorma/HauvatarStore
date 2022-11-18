@@ -1,18 +1,22 @@
 package com.example.HauvatarStore.web;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,26 +44,11 @@ public class VaateController {
         model.addAttribute("clothes", garmetRepository.findAll());
         return "/clothelist";
     }
-    
-    @GetMapping(value = { "/getAllClothes" })
-    public @ResponseBody List<Garmet> getAllClothes() {
-        return (List<Garmet>) garmetRepository.findAll();
-    }
 
     @RequestMapping(value = { "/clothesByManufacturer/{manufacturer}" })
     public String garmetListByManufacturer(@PathVariable("manufacturer") String manufacturer, Model model) {
         model.addAttribute("clothes", garmetRepository.findByManufacturer(manufacturer));
         return "/clothelist";
-    }
-
-    @RequestMapping(value = "/garmets", method = RequestMethod.GET)
-    public @ResponseBody List<Garmet> garmetListRest() {
-        return (List<Garmet>) garmetRepository.findAll();
-    }
-
-    @RequestMapping(value = "/garmet/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Garmet> findGarmetRest(@PathVariable("id") Long garmetId) {
-        return garmetRepository.findById(garmetId);
     }
 
     @RequestMapping(value = "/add")
@@ -90,5 +79,45 @@ public class VaateController {
         model.addAttribute("garmet", garmetRepository.findById(garmetId));
         model.addAttribute("manufacturers", mrepository.findAll());
         return "/editClothe";
+    }
+    
+    //REST FUNCTIONALITY-------------------------------------------------------------------------------------------------
+    
+    @GetMapping(value = { "/getAllClothes" })
+    public @ResponseBody List<Garmet> getAllClothes() {
+        return (List<Garmet>) garmetRepository.findAll();
+    }
+    
+    @GetMapping(value = { "/getClothe/{id}" })
+    public @ResponseBody Optional<Garmet> getClotheById(@PathVariable("id") Long garmetId) {
+    	return garmetRepository.findById(garmetId);
+    }
+    
+    @PostMapping(value = { "/postNewClothe" })
+    public ResponseEntity<Garmet> postNewClothe(@RequestBody Garmet newGarmet) {
+    	Garmet savedGarmet = garmetRepository.save(newGarmet);
+    	return ResponseEntity.created(URI.create(String.format("/garmet/%s", newGarmet.getId()))).body(savedGarmet);
+    }
+    
+    @DeleteMapping(value = { "/deleteClothe/{id}" })
+    public @ResponseBody void deleteClotheById(@PathVariable("id") Long garmetId) {
+        garmetRepository.deleteById(garmetId);
+    }
+    
+    @PutMapping(value = { "/putClothe/{id}" })
+    public Garmet editClotheById(@RequestBody Garmet newGarmet, @PathVariable Long id) {
+    	return garmetRepository.findById(id)
+    		      .map(garmet -> {
+    		        garmet.setName(newGarmet.getName());
+    		        garmet.setType(newGarmet.getType());
+    		        garmet.setPrice(newGarmet.getPrice());
+    		        garmet.setManufacturer(newGarmet.getManufacturer());
+    		        return garmetRepository.save(garmet);
+    		      })
+    		      .orElseGet(() -> {
+    		    	newGarmet.setId(id);
+    		        return garmetRepository.save(newGarmet);
+    		      });
+    	
     }
 }
