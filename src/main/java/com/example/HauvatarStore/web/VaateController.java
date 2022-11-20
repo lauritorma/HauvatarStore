@@ -85,28 +85,28 @@ public class VaateController {
     
     //REST FUNCTIONALITY---------------------------------------------------------------------------------------------------------------------------------------------
     
-    @GetMapping(value = { "/getAllClothes" })
+    @GetMapping(value = { "rest/getAllClothes" })
     public @ResponseBody List<Garmet> getAllClothes() {
         return (List<Garmet>) garmetRepository.findAll();
     }
     
-    @GetMapping(value = { "/getClothe/{id}" })
+    @GetMapping(value = { "rest/getClothe/{id}" })
     public @ResponseBody Optional<Garmet> getClotheById(@PathVariable("id") Long garmetId) {
     	return garmetRepository.findById(garmetId);
     }
     
-    @PostMapping(value = { "/postNewClothe" })
+    @PostMapping(value = { "rest/postNewClothe" })
     public ResponseEntity<Garmet> postNewClothe(@RequestBody Garmet newGarmet) {
     	Garmet savedGarmet = garmetRepository.save(newGarmet);
     	return ResponseEntity.created(URI.create(String.format("/garmet/%s", newGarmet.getId()))).body(savedGarmet);
     }
     
-    @DeleteMapping(value = { "/deleteClothe/{id}" })
+    @DeleteMapping(value = { "rest/deleteClothe/{id}" })
     public @ResponseBody void deleteClotheById(@PathVariable("id") Long garmetId) {
         garmetRepository.deleteById(garmetId);
     }
     
-    @PutMapping(value = { "/putClothe/{id}" })
+    @PutMapping(value = { "rest/putClothe/{id}" })
     public ResponseEntity<?> editClotheById(@RequestBody Garmet newGarmet, @PathVariable Long id) {
     	try {
     		newGarmet.setId(id);            
