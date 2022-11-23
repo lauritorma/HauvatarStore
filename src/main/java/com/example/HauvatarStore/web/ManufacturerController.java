@@ -76,8 +76,6 @@ public class ManufacturerController {
     	//Iterable to List
     	List<Garmet> originalList = new ArrayList<>();
     	originalListiterable.forEach(originalList::add);
-    	System.out.println(originalList);
-    	List<String> nameFilter = Arrays.asList(manufacturerName);
     	boolean contains = false;
     	
     	//Check if any garmets have the deleted manufacturer
