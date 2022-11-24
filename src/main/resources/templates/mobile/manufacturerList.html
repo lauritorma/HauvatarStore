@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<title>Valmistajalista</title>
+</head>
+<body>
+	<h1>Valmistajat</h1>
+	<table class="table table-stiped">
+		<tbody>
+		
+			<tr>
+				<td><b>Nimi</b></td>
+				<td></td>
+				<td></td>
+				
+			</tr>
+			<tr th:each = "manufacturerList : ${manufacturers}">
+				<td th:text="${manufacturerList.manufacturerName}"></td>
+
+					<td><a th:href="@{/deleteManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-danger">Delete</a></td> 
+					<td><a th:href="@{/editManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Edit</a></td>  
+				
+			</tr>
+		
+		</tbody>
+	</table>
+	<a href="/addManufacturermobile" class="btn btn-primary">Lisää valmistaja</a> 
+	<a href="/main" class="btn btn-primary">Palaa pääsivulle</a>
+	
+	
+
+
+</body>
+</html>

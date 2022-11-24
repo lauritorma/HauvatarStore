@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<title>Lisää vaate</title>
+</head>
+<body>
+
+	<h1>Vaatteen lisäys</h1>
+	<h2>Lisää vaate:</h2>
+	<div>
+		<form th:object="${garmet}" th:action="@{savemobile}" action="#" method="post">
+			<table>
+				<tr>
+					<td><label for="name">Nimi:</label> </td>
+					<td><input type="text" th:field="*{name}" /> </td>
+					<td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+				</tr>
+				<tr>
+					<td><label for="type">Tyyppi:</label> </td>
+					<td><input type="text" th:field="*{type}" /> </td>
+					<td th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></td>
+				</tr>
+				<tr>
+					<td><label for="price">Hinta:</label> </td>
+					<td><input type="text" th:field="*{price}" /> </td>
+					<td th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></td>
+				</tr>
+				<tr>
+					<td><label for="manufacturer">Valmistaja:</label> </td>
+					<td>
+						<select id="manufacturerList" th:field="*{manufacturer}" class="form-control">
+							<option th:each="manufacturer: ${manufacturers}" th:value="${manufacturer.manufacturerName}" th:text="${manufacturer.manufacturerName}"></option>
+						</select> 
+					</td>
+					<td th:if="${#fields.hasErrors('manufacturer')}" th:errors="*{manufacturer}"></td>
+				</tr>
+				<input type="submit" value="Save" class="btn btn-success"></input>
+			</table>
+		</form>
+	</div>
+
+</body>
