@@ -46,7 +46,7 @@ public class VaateController {
         model.addAttribute("clothes", garmetRepository.findAll());
         return "/clothelist";
     }
-
+    
     @RequestMapping(value = { "/clothesByManufacturer/{manufacturer}" })
     public String garmetListByManufacturer(@PathVariable("manufacturer") String manufacturer, Model model) {
         model.addAttribute("clothes", garmetRepository.findByManufacturer(manufacturer));

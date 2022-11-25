@@ -1,10 +1,14 @@
 package com.example.HauvatarStore.web;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,7 +33,20 @@ public class MobileController {
     @RequestMapping(value =  "/manufacturerListmobile" )
     public String manufacturerList(Model model) {
         model.addAttribute("manufacturers", mrepository.findAll());
+        model.addAttribute("chartData", getChartData());
+        
+        
         return "mobile/manufacturerList";
+    }
+
+    private List<List<Object>> getChartData() {
+    	List<Object> countbyManufacturer = garmetRepository.getCountByManufacturer();
+    	
+		return List.of(
+				List.of("Dogster", 2),
+				List.of("Mustin Mirri",2)
+				);
+    	
     }
     
     @RequestMapping(value = "/addManufacturermobile")
@@ -62,12 +79,6 @@ public class MobileController {
     @RequestMapping(value = "/clothelistmobile" )
     public String garmetList(Model model) {
         model.addAttribute("clothes", garmetRepository.findAll());
-        return "mobile/clothelist";
-    }
-    
-    @RequestMapping(value = { "/clothesByManufacturermobile/{manufacturer}" })
-    public String garmetListByManufacturer(@PathVariable("manufacturer") String manufacturer, Model model) {
-        model.addAttribute("clothes", garmetRepository.findByManufacturer(manufacturer));
         return "mobile/clothelist";
     }
 
