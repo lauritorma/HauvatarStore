@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ViewController {
 
-    @GetMapping( { "/", "/main"} )
+    @GetMapping( { "/", "/main", "/home"} )
     public String greeting(Device device) {
 		
         String deviceType = "browser";
