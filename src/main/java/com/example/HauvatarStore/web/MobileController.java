@@ -40,9 +40,10 @@ public class MobileController {
         return "mobile/manufacturerList";
     }
 
-    private List<List<Object>> getChartData() {
+    @SuppressWarnings({ "unchecked", "rawtypes" })
+	private List<List<Object>> getChartData() {
     	List<String> countbyManufacturer = garmetRepository.getCountByManufacturer();
-    	List parsedList = new ArrayList<List<String>>();
+    	List parsedList = new ArrayList();
     	
     	for (String manufacturer : countbyManufacturer) {
     		String[] variables = manufacturer.split(",");
