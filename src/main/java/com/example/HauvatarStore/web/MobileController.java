@@ -3,6 +3,7 @@ package com.example.HauvatarStore.web;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -40,15 +41,18 @@ public class MobileController {
     }
 
     private List<List<Object>> getChartData() {
-    	List<Object> countbyManufacturer = garmetRepository.getCountByManufacturer();
+    	List<String> countbyManufacturer = garmetRepository.getCountByManufacturer();
+    	List parsedList = new ArrayList<List<String>>();
     	
-		return List.of(
-				List.of("Dogster", 2),
-				List.of("Mustin Mirri",2)
-				);
+    	for (String manufacturer : countbyManufacturer) {
+    		String[] variables = manufacturer.split(",");
+    		parsedList.add(List.of(variables[0], Integer.parseInt(variables[1])));
+    	}
+
     	
+		return parsedList;
     }
-    
+  
     @RequestMapping(value = "/addManufacturermobile")
     public String addManufacturer(Model model) {
         model.addAttribute("manufacturer", new Manufacturer());
