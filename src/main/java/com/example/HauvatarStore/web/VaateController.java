@@ -36,7 +36,7 @@ public class VaateController {
     @Autowired
     private ManufacturerRepository mrepository;
 
-    @RequestMapping(value = { "/index" })
+    @RequestMapping(value = { "/","/favicon.ico","/index" })
     public String homepage(Model model) {
         return "/homepage";
     }
