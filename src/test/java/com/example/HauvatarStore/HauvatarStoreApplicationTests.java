@@ -9,4 +9,3 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 class HauvatarStoreApplicationTests {
 
 }
-ä
