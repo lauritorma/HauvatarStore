@@ -3,6 +3,7 @@ package com.example.HauvatarStore.domain;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +22,10 @@ public class Manufacturer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="manufacturerId",nullable=false)
 	private Long manufacturerId;
 	@NotBlank(message = "Kenttä ei voi olla tyhjä")
+	@Column(name="manufacturerName",nullable=false)
 	private String manufacturerName;
 	
 	public Manufacturer() {}

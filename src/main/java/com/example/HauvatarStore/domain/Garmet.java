@@ -1,5 +1,6 @@
 package com.example.HauvatarStore.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,17 +17,21 @@ import javax.validation.constraints.PositiveOrZero;
 public class Garmet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id",nullable=false)
 	private Long id;
 	
 	@NotBlank(message = "Kenttä ei voi olla tyhjä")
+	@Column(name="name",nullable=false)
 	private String name;
 	@NotBlank(message = "Kenttä ei voi olla tyhjä")
+	@Column(name="tyyppi",nullable=false)
 	private String type;
 	@PositiveOrZero(message = "Hinta ei voi olla negatiivinen luku")
 	@NotNull(message = "Kenttä ei voi olla tyhjä")
 	@Digits(integer=6, fraction=2, message = "Hinta saa olla enintään 6 numeroa ja enintään 2 desimaalin tarkkuudella")
-	
+	@Column(name="price",nullable=false)
 	private Double price;
+	@Column(name="manufacturer",nullable=false)
 	private String manufacturer;
 
 	public Garmet() {
