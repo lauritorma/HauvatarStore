@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 
 @Entity
-@Table(name="Garmet")
+@Table(name="garmet")
 public class Garmet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

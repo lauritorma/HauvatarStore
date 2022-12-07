@@ -17,7 +17,7 @@ import org.springframework.lang.NonNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="Manufacturer")
+@Table(name="manufacturer")
 public class Manufacturer {
 
 	@Id
@@ -25,7 +25,7 @@ public class Manufacturer {
 	@Column(name="manufacturerId",nullable=false)
 	private Long manufacturerId;
 	@NotBlank(message = "Kenttä ei voi olla tyhjä")
-	@Column(name="manufacturerName",nullable=false)
+	@Column(name="manufacturerName",nullable=false, unique=true)
 	private String manufacturerName;
 	
 	public Manufacturer() {}
