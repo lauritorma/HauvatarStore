@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Bookstore</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+	<div th:if="${param.error}">
+		<p>Invalid username and password.</p>
+	</div>
+	<div th:if="${param.logout}">
+		<p>You have signed out.</p>
+	</div>
+	
+
+	<form th:action="@{/login}" method="post">
+		<div><label> User Name : <input type="text" name="username" /> </label></div>
+		<div><label> Password : <input type="text" name="password" /> </label></div>
+		<div><input class="btn btn-primary" type="submit" value="Sign In" /> </div>
+	</form>
+</body>
+</html>
