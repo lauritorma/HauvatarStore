@@ -23,22 +23,22 @@ public class HauvatarStoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(HauvatarStoreApplication.class, args);
 	}
-	@Bean
-	public CommandLineRunner vaateDemo(GarmetRepository gRepository, ManufacturerRepository mrepository) {
-		return (args) -> {
-			gRepository.save(new Garmet("Koiruliinin villapaituliini", "Koiran vaatteet", 20.0, "Mustin mirri"));
-			gRepository.save(new Garmet("Koiruliinin sadetakkinen", "Koiran vaatteet", 25.0, "Mustin mirri"));
-			gRepository.save(new Garmet("Kissuliinin sadetakkuli", "Kissan vaatteet", 15.0, "Dogster"));
-			gRepository.save(new Garmet("Kisulin töppöset", "Kissan vaatteet", 5.0, "Dogster"));
-			
-			mrepository.save(new Manufacturer("Mustin mirri"));
-			mrepository.save(new Manufacturer("Kylmä koira"));
-			mrepository.save(new Manufacturer("Dogster"));
-			mrepository.save(new Manufacturer("Murr & Miau"));
-			mrepository.save(new Manufacturer("Hedgehog Clothing co."));
-		
-		};
-	}
+//	@Bean
+//	public CommandLineRunner vaateDemo(GarmetRepository gRepository, ManufacturerRepository mrepository) {
+//		return (args) -> {
+//			gRepository.save(new Garmet("Koiruliinin villapaituliini", "Koiran vaatteet", 20.0, "Mustin mirri"));
+//			gRepository.save(new Garmet("Koiruliinin sadetakkinen", "Koiran vaatteet", 25.0, "Mustin mirri"));
+//			gRepository.save(new Garmet("Kissuliinin sadetakkuli", "Kissan vaatteet", 15.0, "Dogster"));
+//			gRepository.save(new Garmet("Kisulin töppöset", "Kissan vaatteet", 5.0, "Dogster"));
+//			
+//			mrepository.save(new Manufacturer("Mustin mirri"));
+//			mrepository.save(new Manufacturer("Kylmä koira"));
+//			mrepository.save(new Manufacturer("Dogster"));
+//			mrepository.save(new Manufacturer("Murr & Miau"));
+//			mrepository.save(new Manufacturer("Hedgehog Clothing co."));
+//		
+//		};
+//	}
 	//@Bean
 	//public CommandLineRunner TuoteDemo(TuoteRepository tRepository, CategoryRepository categoryRepository, UserRepository urepository) {
 		//return (args) -> {
