@@ -21,11 +21,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Manufacturer {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="manufacturerId",nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="manufacturerid",nullable=false)
 	private Long manufacturerId;
+	
 	@NotBlank(message = "Kenttä ei voi olla tyhjä")
-	@Column(name="manufacturerName",nullable=false, unique=true)
+	@Column(name="manufacturername",nullable=false, unique=true)
 	private String manufacturerName;
 	
 	public Manufacturer() {}
