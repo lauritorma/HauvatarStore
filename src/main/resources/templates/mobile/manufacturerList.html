@@ -44,8 +44,10 @@
 		</tbody>
 	</table>
 	<div id="chart_div"></div>
-	<a href="/addManufacturermobile" class="btn btn-primary">Lisää valmistaja</a> 
+	<a href="/addManufacturermobile" class="btn btn-primary" sec:authorize="hasAuthority('admin')">Lisää valmistaja</a> 
 	<a href="/main" class="btn btn-primary">Palaa pääsivulle</a>
+	<form  th:action="@{/logout}" method="post">
+		<input class="btn btn-warning" type="submit" value="Kirjaudu ulos" /></form>
 	
 	
 
