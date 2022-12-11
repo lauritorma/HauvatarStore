@@ -29,15 +29,15 @@
 		
 			<tr>
 				<td><b>Nimi</b></td>
-				<td></td>
-				<td></td>
+				<td  sec:authorize="hasAuthority('ADMIN')"></td>
+				<td  sec:authorize="hasAuthority('ADMIN')"></td>
 				
 			</tr>
 			<tr th:each = "manufacturerList : ${manufacturers}">
 				<td th:text="${manufacturerList.manufacturerName}"></td>
 
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-danger">Delete</a></td> 
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Edit</a></td>  
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-danger">Poista</a></td> 
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Muokkaa</a></td>  
 				
 			</tr>
 		

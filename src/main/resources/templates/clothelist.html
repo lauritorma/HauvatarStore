@@ -15,8 +15,8 @@
 				<td><b>Tyyppi</b></td>
 				<td><b>Hinta</b></td>
 				<td><b>Valmistaja</b></td>
-				<td></td>
-				<td></td>
+				<td  sec:authorize="hasAuthority('ADMIN')"></td>
+				<td  sec:authorize="hasAuthority('ADMIN')"></td>
 				
 			</tr>
 			<tr th:each = "clothelist : ${clothes}">
@@ -25,8 +25,8 @@
 				<td th:text="${clothelist.price}"></td>
 
 				<td><a th:href="@{/clothesByManufacturer/{manufacturer}(manufacturer=${clothelist.manufacturer})}" th:text="${clothelist.manufacturer}"></a></td>
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Poista</a></td> 
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Muokkaa</a></td>  
 				
 			</tr>
 		
