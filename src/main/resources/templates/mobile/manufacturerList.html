@@ -36,8 +36,8 @@
 			<tr th:each = "manufacturerList : ${manufacturers}">
 				<td th:text="${manufacturerList.manufacturerName}"></td>
 
-					<td><a th:href="@{/deleteManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-danger">Delete</a></td> 
-					<td><a th:href="@{/editManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Edit</a></td>  
+					<td sec:authorize="hasAuthority('admin')"><a th:href="@{/deleteManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-danger">Delete</a></td> 
+					<td sec:authorize="hasAuthority('admin')"><a th:href="@{/editManufacturermobile/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Edit</a></td>  
 				
 			</tr>
 		
