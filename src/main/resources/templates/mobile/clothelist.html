@@ -26,8 +26,8 @@
 					<td th:text="${clothelist.price}"></td>
 	
 					<td><a th:href="@{/clothesByManufacturermobile/{manufacturer}(manufacturer=${clothelist.manufacturer})}" th:text="${clothelist.manufacturer}"></a></td>
-						<td sec:authorize="hasAuthority('admin')"><a th:href="@{/deletemobile/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
-						<td sec:authorize="hasAuthority('admin')"><a th:href="@{/editmobile/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
+						<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletemobile/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
+						<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editmobile/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
 					
 				</tr>
 			
