@@ -32,7 +32,7 @@
 		
 		</tbody>
 	</table>
-	<a href="/add" class="btn btn-primary" sec:authorize="hasAuthority('admin')">Lisää vaate</a> 
+	<a href="/add" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">Lisää vaate</a> 
 	<a href="/index" class="btn btn-primary">Palaa pääsivulle</a>
 	<form  th:action="@{/logout}" method="post">
 		<input class="btn btn-warning" type="submit" value="Kirjaudu ulos" /></form>
