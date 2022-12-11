@@ -37,33 +37,33 @@ public class VaateController {
 
 	@RequestMapping(value = { "/", "/favicon.ico", "/index" })
 	public String homepage(Model model) {
-		return "/homepage";
+		return "homepage";
 	}
 
 	@RequestMapping(value = { "/clothes", "/clothelist" })
 	public String garmetList(Model model) {
 		model.addAttribute("clothes", garmetRepository.findAll());
-		return "/clothelist";
+		return "clothelist";
 	}
 
 	@RequestMapping(value = { "/clothesByManufacturer/{manufacturer}" })
 	public String garmetListByManufacturer(@PathVariable("manufacturer") String manufacturer, Model model) {
 		model.addAttribute("clothes", garmetRepository.findByManufacturer(manufacturer));
-		return "/clothelist";
+		return "clothelist";
 	}
 
 	@RequestMapping(value = "/add")
 	public String addGarmet(Model model) {
 		model.addAttribute("garmet", new Garmet());
 		model.addAttribute("manufacturers", mrepository.findAll());
-		return "/addClothe";
+		return "addClothe";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(Model model, @ModelAttribute("garmet") @Valid Garmet garmet, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("manufacturers", mrepository.findAll());
-			return "/addClothe";
+			return "addClothe";
 		}
 		garmetRepository.save(garmet);
 		return "redirect:/clothes";
@@ -79,7 +79,7 @@ public class VaateController {
 	public String editGarmet(@PathVariable("id") Long garmetId, Model model) {
 		model.addAttribute("garmet", garmetRepository.findById(garmetId));
 		model.addAttribute("manufacturers", mrepository.findAll());
-		return "/editClothe";
+		return "editClothe";
 	}
 
 	@GetMapping(value = "/login")

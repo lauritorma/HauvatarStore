@@ -36,7 +36,7 @@ public class ManufacturerController {
     @RequestMapping(value = { "/manufacturers", "/manufacturerList" })
     public String manufacturerList(Model model) {
         model.addAttribute("manufacturers", mrepository.findAll());
-        return "/manufacturerList";
+        return "manufacturerList";
     }
 
     // Add new manufacturer
@@ -44,7 +44,7 @@ public class ManufacturerController {
     @RequestMapping(value = "/addManufacturer")
     public String addManufacturer(Model model) {
         model.addAttribute("manufacturer", new Manufacturer());
-        return "/addManufacturer";
+        return "addManufacturer";
     }
 
     // Save new manufacturer
@@ -52,7 +52,7 @@ public class ManufacturerController {
     @RequestMapping(value = "/saveManufacturer", method = RequestMethod.POST)
     public String save(@ModelAttribute("manufacturer") @Valid Manufacturer manufacturer, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/addManufacturer";
+            return "addManufacturer";
         }
         mrepository.save(manufacturer);
         return "redirect:/manufacturerList";
@@ -63,7 +63,7 @@ public class ManufacturerController {
     @RequestMapping(value = "/editManufacturer/{manufacturerId}", method = RequestMethod.GET)
     public String editManufacturer(@PathVariable("manufacturerId") Long manufacturerId, Model model) {
         model.addAttribute("manufacturer", mrepository.findById(manufacturerId));
-        return "/editManufacturer";
+        return "editManufacturer";
     }
 
     // Delete manufacturer
