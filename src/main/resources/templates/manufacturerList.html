@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
 <title>Valmistajalista</title>
 </head>
 <body>
-<div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
-	<div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+	<div class="alert alert-primary" role="alert" th:text="${success}"
+		th:if="${success}"></div>
+	<div class="alert alert-danger" role="alert" th:text="${error}"
+		th:if="${error}"></div>
 	<h1>Valmistajat</h1>
 	<table class="table table-stiped">
 		<tbody>
-		
+
 			<tr>
 				<td><b>Nimi</b></td>
 				<td></td>
 				<td></td>
-				
+
 			</tr>
-			<tr th:each = "manufacturerList : ${manufacturers}">
+			<tr th:each="manufacturerList : ${manufacturers}">
 				<td th:text="${manufacturerList.manufacturerName}"></td>
 
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteManufacturer/{id}/{name}(id=${manufacturerList.manufacturerId}, name=${manufacturerList.manufacturerName})}" class="btn btn-danger">Delete</a></td> 
-					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editManufacturer/{id}(id=${manufacturerList.manufacturerId})}" class="btn btn-success">Edit</a></td>  
-				
+				<td sec:authorize="hasAuthority('ADMIN')"><a
+					th:href="@{/deleteManufacturer/{id}/{name}(id=${manufacturerList.manufacturerId}, name=${manufacturerList.manufacturerName})}"
+					class="btn btn-danger">Delete</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a
+					th:href="@{/editManufacturer/{id}(id=${manufacturerList.manufacturerId})}"
+					class="btn btn-success">Edit</a></td>
+
 			</tr>
-		
+
 		</tbody>
 	</table>
-	<a href="/addManufacturer" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">Lisää valmistaja</a> 
+	<a href="/addManufacturer" class="btn btn-primary"
+		sec:authorize="hasAuthority('ADMIN')">Lisää valmistaja</a>
 	<a href="/index" class="btn btn-primary">Palaa pääsivulle</a>
-	<form  th:action="@{/logout}" method="post">
-		<input class="btn btn-warning" type="submit" value="Kirjaudu ulos" /></form>
-	
+	<form th:action="@{/logout}" method="post">
+		<input class="btn btn-warning" type="submit" value="Kirjaudu ulos" />
+	</form>
+
 </body>
 </html>
