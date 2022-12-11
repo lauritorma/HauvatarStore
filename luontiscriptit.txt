@@ -1,0 +1,42 @@
+CREATE TABLE manufacturer(
+manufacturerid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+manufacturerName VARCHAR(50) KEY
+);
+
+
+CREATE TABLE garmet(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+tyyppi VARCHAR(50) NOT NULL,
+price FLOAT(50) NOT NULL,
+manufacturer VARCHAR(50) NOT NULL FOREIGN KEY REFERENCES manufacturer (manufacturerName)
+);
+
+
+CREATE TABLE userclass(
+userid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(50) NOT NULL UNIQUE,
+password VARCHAR(100) NOT NULL,
+rooli VARCHAR(50) NOT NULL
+);
+
+
+
+INSERT INTO manufacturer (manufacturerid, manufacturername)
+VALUES 
+(1,'Dogster'),
+(2, 'Hauvatar'),
+(3, 'Catter');
+
+
+INSERT INTO garmet (id,name,tyyppi,price,manufacturer)
+VALUES
+(1, 'Hihna', 'Hieno', 12.95, 'Dogster'),
+(2, 'Sadetakki', 'Vedenkestävä', 35.95, 'Hauvatar'),
+(3, 'Viuhka', 'Kissalle', 5.99, 'Catter');
+
+
+INSERT INTO userclass (userid,username,password,rooli)
+VALUES
+(1, 'ADMIN', ' $2a$12$5mL.QSmP2mXifkpj3n/EOeX9NKM7HF62CRPfXPozZi3MxGlyzbNZa', 'admin'),
+(2, 'USER', '$2a$12$.1lrugr8B0.AaYPpS/qTwOIW0Ga8s9LdeoPw2.egQx5iJvoQJwuyW', 'user');
