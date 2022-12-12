@@ -6,18 +6,25 @@
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
+<h1 style="text-align:center; color:black; margin:50px 0px 50px; width:100%; "><b>Tervetuloa Hauvattareen!</b></h1>
 	<div th:if="${param.error}">
-		<p>Invalid username and password.</p>
+		<p>Invalid username or password.</p>
 	</div>
 	<div th:if="${param.logout}">
 		<p>You have signed out.</p>
 	</div>
 	
-
-	<form th:action="@{/login}" method="post">
-		<div><label> UserName : <input  placeholder="Username" type="text" name="username" /> </label></div>
-		<div><label> Password : <input placeholder="Password" type="password" name="password" /> </label></div>
-		<div><button class="btn btn-primary" type="submit" value="Sign In" >Sign in</button> </div>
+	<div style=" padding:10px; margin:auto; width:100%; display:inline-block; ">
+	<h2 style="text-align: center; width:100%; margin-bottom:20px;">Login</h2>
+	
+	<form style="text-align:center;" th:action="@{/login}" method="post">
+		<label style=" display: block; width: 100%;"> Käyttäjänimi : <input  placeholder="Username" type="text" name="username" /> </label>
+		<div style="clear: both; display: block; width: 100%;"></div>
+		<label style=" display: block; width: 100%;"> Salasana : <input placeholder="Password" type="password" name="password" /> </label>
+		<div style="clear: both; display: block; width: 100%;"></div>
+		<button style="max-width:100%; margin-top:10px;" class="btn btn-primary" type="submit" value="Sign In" >Kirjaudu</button> 
+	
 	</form>
+	</div>
 </body>
 </html>
