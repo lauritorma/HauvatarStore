@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h1>Vaatteet</h1>
-	<table class="table table-stiped">
+	<table class="table table-striped">
 		<tbody>
 		
 			<tr>
@@ -15,8 +15,8 @@
 				<td><b>Tyyppi</b></td>
 				<td><b>Hinta</b></td>
 				<td><b>Valmistaja</b></td>
-				<td></td>
-				<td></td>
+				<td  sec:authorize="hasAuthority('ADMIN')"></td>
+				<td  sec:authorize="hasAuthority('ADMIN')"></td>
 				
 			</tr>
 			<tr th:each = "clothelist : ${clothes}">
@@ -25,15 +25,17 @@
 				<td th:text="${clothelist.price}"></td>
 
 				<td><a th:href="@{/clothesByManufacturer/{manufacturer}(manufacturer=${clothelist.manufacturer})}" th:text="${clothelist.manufacturer}"></a></td>
-					<td><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Delete</a></td> 
-					<td><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Edit</a></td>  
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${clothelist.id})}" class="btn btn-danger">Poista</a></td> 
+					<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${clothelist.id})}" class="btn btn-success">Muokkaa</a></td>  
 				
 			</tr>
 		
 		</tbody>
 	</table>
-	<a href="/add" class="btn btn-primary">Lisää vaate</a> 
-	<a href="/home" class="btn btn-primary">Palaa pääsivulle</a>
+	<a href="/add" class="btn btn-primary" sec:authorize="hasAuthority('ADMIN')">Lisää vaate</a> 
+	<a href="/index" class="btn btn-primary">Palaa pääsivulle</a>
+	<form  th:action="@{/logout}" method="post">
+		<input class="btn btn-warning" type="submit" value="Kirjaudu ulos" /></form>
 	
 	
 

@@ -5,15 +5,18 @@
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 <title>Eläinten vaatekauppa</title>
 </head>
-<body>
-<h1>Eläinten vaatekauppa!</h1>
+<body style="text-align:center;">
+<h1>Hauvatar-Eläinten vaatekauppa!</h1>
 <h2>Pääsivu</h2>
 
 <table>
 
 <tbody>
 
-
+<a href="/clothelist" class="btn btn-primary">Vaatteet</a>
+<a href="/manufacturerList" class="btn btn-primary">Valmistajat</a>
+<form  th:action="@{/logout}" method="post">
+		<input class="btn btn-warning" type="submit" value="Kirjaudu ulos" /></form>
 
 </tbody>
 
@@ -22,9 +25,6 @@
 </table>
 
 
-<a href="/clothelist" class="btn btn-primary">Vaatteet</a>
-<a href="/manufacturerList" class="btn btn-primary">Valmistajat</a>
-<form  th:action="@{/logout}" method="post">
-		<input class="btn btn-warning" type="submit" value="Kirjaudu ulos" /></form>
+
 </body>
 </html>
